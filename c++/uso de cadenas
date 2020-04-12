@@ -1,0 +1,1 @@
+#include<string.h>// almacena la cadena que el usuario ingrese	gets(variable); poco optima//almacena los datos que tu desees	cin.getline(variable,tamaño,'n');
