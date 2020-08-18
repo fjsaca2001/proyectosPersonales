@@ -12,7 +12,7 @@ void insertar(Nodo *&, int);
 void mostrar(Nodo *);
 void buscar(Nodo *&, int);
 void eliminar(Nodo *&, int);
-void vaciar(Nodo *&);
+void vaciar(Nodo *&, int &);
 int main()
 {
     int dato, op, exit;
@@ -61,7 +61,11 @@ int main()
             break;
         case 5:
             // Vaciar lista
-            vaciar(lista);
+            while (lista != NULL)
+            {
+                vaciar(lista, dato);
+                cout << dato << " Eliminado\n";
+            }
             break;
         case 6:
             // Salida del programa
@@ -72,7 +76,7 @@ int main()
             cout << "Verifique su ingreso....\n";
             break;
         }
-    } while (op != 5);
+    } while (op != 6);
     return 0;
 }
 void insertar(Nodo *&lista, int n)
@@ -180,13 +184,14 @@ void eliminar(Nodo *&lista, int dato)
         cout << "La lista esta vacia.\n";
     }
 }
-void vaciar(Nodo *&lista)
+void vaciar(Nodo *&lista, int &dato)
 {
+    // Guardar la lista
     Nodo *aux = lista;
-    while (aux != NULL)
-    {
-        aux->dato = lista->dato;
-        lista = lista->sig;
-        delete aux;
-    }
+    // Guardar el dato
+    dato = lista->dato;
+    // Pasar al siguiente
+    lista = lista->sig;
+    // Eliminar el nodo
+    delete aux;
 }
