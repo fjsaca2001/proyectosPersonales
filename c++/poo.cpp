@@ -1,36 +1,45 @@
 #include <iostream>
 #include <stdlib.h>
+#include <math.h>
 using namespace std;
-class Persona
+class Rectangulo
 {
     // atributos
 private:
-    int edad;
-    string nombre;
+    double largo, ancho;
     // metodos
 public:
     //constructor
-    Persona(int, string);
-    void leer();
-    void correr();
+    Rectangulo(double, double);
+    void perimetro();
+    void area();
 };
-Persona::Persona(int edad1, string name){
-    edad = edad1;
-    nombre = name;
+Rectangulo::Rectangulo(double l, double a)
+{
+    largo = l;
+    ancho = a;
 }
-void Persona::leer(){
-    cout<<"Metodo leer";
+void Rectangulo::perimetro()
+{
+    double peri;
+    peri = pow(largo, 2) + pow(ancho, 2);
+    cout << "\nEl perimetro es -> " << peri << endl;
 }
-void Persona::correr(){
-    cout<<"Metodo correr";
+void Rectangulo::area()
+{
+    double area;
+    area = largo * ancho;
+    cout << "\nEl area es -> " << area << endl;
 }
 int main()
 {
-    Persona persona = Persona(19, "Frank");
-    persona.correr();
-    persona.leer();
-    Persona p1(19,"Joel");
-    p1.leer();
-    p1.correr();
+    double largo, ancho;
+    cout << "Ingrese el largo del rectangulo: ";
+    cin >> largo;
+    cout << "Ingrese el ancho del rectangulo: ";
+    cin >> ancho;
+    Rectangulo rectangulo = Rectangulo(largo, ancho);
+    rectangulo.area();
+    rectangulo.perimetro();
     return 0;
 }
